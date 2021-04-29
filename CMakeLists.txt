@@ -15,7 +15,7 @@ set(SOURCES
 #    ./apps/u3d-to-stl/block_0xFFFFFF36.c
 #    ./apps/u3d-to-stl/block_0xFFFFFF37.c
     ./apps/u3d-to-stl/block_0xFFFFFF3B.c
-#    ./apps/u3d-to-stl/block_0xFFFFFF3C.c
+    ./apps/u3d-to-stl/block_0xFFFFFF3C.c
 #    ./apps/u3d-to-stl/block_0xFFFFFF3E.c
 #    ./apps/u3d-to-stl/block_0xFFFFFF3F.c
 #    ./apps/u3d-to-stl/block_0xFFFFFF41.c

@@ -102,6 +102,10 @@ int BlockInfo(void* blockCtx, const U3dBlock *pBlock, const U32 position)
         u3dDisposeInfo0xFFFFFF3B(u3dcb, position, (pBlock->data).data,
                                  (pBlock->data).size, &shift);
         break;
+    case U3D_BT_CLODMESHPROGRESSIVE:
+        u3dDisposeInfo0xFFFFFF3C(u3dcb, position, (pBlock->data).data,
+                                 (pBlock->data).size, &shift);
+        break;
 #if 0
     case U3D_BT_CLODMESHPROGRESSIVE:
         u3dDisposeInfo0xFFFFFF3C(u3dcb, position, (pBlock->data).data,

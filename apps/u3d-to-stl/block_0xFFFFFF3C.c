@@ -60,8 +60,13 @@ U3dStatus u3dDisposeInfo0xFFFFFF3C(U3dCallBack *u3dcb, U32 position,
 	u3dGetU32(u3dcb->u3ddecoder, &endResolution);
 	printf("EndResolution: %d\n", endResolution);
 	
-	U3DCompCtxID zero_ctx;
+	U3DCompCtxID zero_ctx, 
+		diffusecount_ctx, diffusecolorsign_ctx, colordiffr_ctx;
 	u3dDecoderCreateCompCtx(u3dcb->u3ddecoder, &zero_ctx);
+	u3dDecoderCreateCompCtx(u3dcb->u3ddecoder, &diffusecount_ctx);
+	u3dDecoderCreateCompCtx(u3dcb->u3ddecoder, &diffusecolorsign_ctx);
+	u3dDecoderCreateCompCtx(u3dcb->u3ddecoder, &colordiffr_ctx);
+
 	for (U32 currentPosition = startResolution; 
 			 currentPosition < endResolution;
 			 currentPosition++) {
@@ -79,10 +84,22 @@ U3dStatus u3dDisposeInfo0xFFFFFF3C(U3dCallBack *u3dcb, U32 position,
 	  //return u3dStsNoErr;
 
 	  // New Diffuse Color Info
+      U16 newDiffuseColorCount;
+	  u3dGetDynamicCompressedU16(u3dcb->u3ddecoder,
+	  							diffusecount_ctx, &newDiffuseColorCount);
+	  for (int i = 0; i < newDiffuseColorCount; i++) {
+		U8 diffuseColorDifferenceSigns;
+		u3dGetDynamicCompressedU8(u3dcb->u3ddecoder,
+									diffusecolorsign_ctx, &diffuseColorDifferenceSigns);
+		U32 diffuseColorDifferenceRed;
+		u3dGetDynamicCompressedU32(u3dcb->u3ddecoder,
+									colordiffr_ctx, &diffuseColorDifferenceRed);
+	  }
 
 	  // New Specular Color Info
 
 	  // New Texture Coord Info
+
 
 	  // New Face Count
 
